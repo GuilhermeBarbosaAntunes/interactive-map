@@ -1,4 +1,4 @@
-# Mapa Interativo
+# Interactive Map
 
 Interactive map web application built with React, Vite, and Leaflet.
 
