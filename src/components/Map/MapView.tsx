@@ -1,11 +1,11 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
+import L from 'leaflet'
 import 'leaflet/dist/leaflet.css';
 import { useEffect } from 'react';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
-import norteDeMinas from '../../public/norte-de-minas.png';
+
 
 // Defines the default icon for all markers.
 const DefaultIcon = L.icon({
@@ -17,7 +17,6 @@ const DefaultIcon = L.icon({
   popupAnchor: [1, -34],
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41],
-  iconMapUrl: norteDeMinas,
 });
 // Sets the default icon for all markers.
 L.Marker.prototype.options.icon = DefaultIcon;
