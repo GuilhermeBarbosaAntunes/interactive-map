@@ -1,12 +1,47 @@
-# My Interactive Map
+# Mapa Interativo
 
-Custom map inspired by RDR2Map.com
+Interactive map web application built with React, Vite, and Leaflet.
 
-## 🚀 Quick Start
+## Requirements
+
+- Node.js `20.19+` or `22.12+`
+- `pnpm` (recommended package manager)
+
+## Quick Start
 
 ```bash
 # Install dependencies
 pnpm install
 
-# Run development
-pnpm run dev# interactive-map
+# Start development server
+pnpm dev
+```
+
+After starting the server, open the local URL shown in the terminal (usually `http://localhost:5173`).
+
+## Available Scripts
+
+```bash
+pnpm dev       # Run development server
+pnpm build     # Type-check and build production assets
+pnpm preview   # Preview production build locally
+pnpm lint      # Run ESLint
+```
+
+## Project Structure
+
+```text
+src/
+  components/
+    Map/
+      MapView.tsx
+  data/
+public/
+  tiles/
+```
+
+## Notes
+
+- The map uses local tiles from `public/tiles`.
+- Markers are currently loaded from local JSON data in `src/data`.
+- Leaflet marker icon setup is handled in `MapView` to avoid common bundler issues.
