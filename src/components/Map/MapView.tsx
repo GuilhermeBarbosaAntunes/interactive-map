@@ -2,13 +2,12 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect } from 'react';
-
-// Corrige ícones (problema clássico do Leaflet com Vite)
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 import norteDeMinas from '../../public/norte-de-minas.png';
 
+// Defines the default icon for all markers.
 const DefaultIcon = L.icon({
   iconUrl: icon,
   iconRetinaUrl: iconRetina,
@@ -20,9 +19,10 @@ const DefaultIcon = L.icon({
   shadowSize: [41, 41],
   iconMapUrl: norteDeMinas,
 });
-
+// Sets the default icon for all markers.
 L.Marker.prototype.options.icon = DefaultIcon;
 
+// Represents one point shown on the map.
 interface MarkerData {
   id: string;
   lat: number;
@@ -31,10 +31,12 @@ interface MarkerData {
   descricao: string;
 }
 
+// Props accepted by the map view component.
 interface MapViewProps {
   markers: MarkerData[];
 }
 
+// Limits the visible area to the local tile coordinate system.
 const MAP_BOUNDS: L.LatLngBoundsLiteral = [[0, 0], [100, 100]];
 
 function MapView({ markers }: MapViewProps) {
@@ -61,7 +63,7 @@ function MapView({ markers }: MapViewProps) {
         errorTileUrl="https://via.placeholder.com/256x256/333/fff?text=Tile+não+encontrada"
       />
 
-      {/* Marcadores de teste */}
+      {/* Static marker used to validate map positioning during development. */}
       <Marker position={[50, 50]}>
         <Popup>
           <strong>Centro do Mapa</strong>
