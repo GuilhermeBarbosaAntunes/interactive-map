@@ -25,5 +25,14 @@
     "descricao": "Local seguro para descansar.",
     "tipo": "acampamento",
     "categoria": "principal"
+  },
+  {
+    "id": "loc_003",
+    "lat": 40,
+    "lng": 60,
+    "nome": "Acampamento Base",
+    "descricao": "Um ponto de interesse na região.",
+    "tipo": "ponto_interesse",
+    "categoria": "principal"
   }
 ]
