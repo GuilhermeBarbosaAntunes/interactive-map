@@ -27,10 +27,10 @@
     "category": "primary"
   },
   {
-    "id": "loc_003",
+    "id": "loc_004",
     "lat": 40,
     "lng": 60,
-    "name": "Base Camp",
+    "name": "Fortress",
     "description": "A safe place to rest.",
     "type": "interest_point",
     "category": "primary"

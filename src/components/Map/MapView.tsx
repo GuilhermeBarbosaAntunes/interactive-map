@@ -18,6 +18,7 @@ const DefaultIcon = L.icon({
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41],
 });
+
 // Sets the default icon for all markers.
 L.Marker.prototype.options.icon = DefaultIcon;
 

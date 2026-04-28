@@ -22,6 +22,11 @@ export class StaticLocationRepository implements LocationRepository {
     }
 
     async getLocationById(id: string): Promise<MapLocation | undefined> {
+        
+        if(id) {
+            validateUniqueLocationIdentifier(marketsData.map(normalizeRawLocation));
+        }
+
         const rawLocation = marketsData.find((location) => location.id === id);
         return rawLocation ? normalizeRawLocation(rawLocation) : undefined;
     }
