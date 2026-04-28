@@ -3,8 +3,8 @@
     "id": "loc_001",
     "lat": 30,
     "lng": 40,
-    "name": "Torre de Vigia",
-    "description": "Uma torre antiga com vista para o vale.",
+    "name": "Vigylant Tower",
+    "description": "A tower of Vigylant, a powerful entity that protects the land from darkness.",
     "type": "structure",
     "category": "primary"
   },
@@ -12,8 +12,8 @@
     "id": "loc_002",
     "lat": 60,
     "lng": 70,
-    "name": "Caverna Escondida",
-    "description": "Entrada coberta por musgo.",
+    "name": "Hidden Cave",
+    "description": "A hidden cave with a mysterious entrance.",
     "type": "interest_point",
     "category": "primary"
   },
@@ -21,8 +21,8 @@
     "id": "loc_003",
     "lat": 80,
     "lng": 20,
-    "name": "Acampamento Base",
-    "description": "Local seguro para descansar.",
+    "name": "Base Camp",
+    "description": "A safe place to rest.",
     "type": "camping",
     "category": "primary"
   },
@@ -30,8 +30,8 @@
     "id": "loc_003",
     "lat": 40,
     "lng": 60,
-    "name": "Acampamento Base",
-    "description": "Um ponto de interesse na região.",
+    "name": "Base Camp",
+    "description": "A safe place to rest.",
     "type": "interest_point",
     "category": "primary"
   }
