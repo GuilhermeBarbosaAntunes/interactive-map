@@ -3,36 +3,36 @@
     "id": "loc_001",
     "lat": 30,
     "lng": 40,
-    "nome": "Torre de Vigia",
-    "descricao": "Uma torre antiga com vista para o vale.",
-    "tipo": "estrutura",
-    "categoria": "principal"
+    "name": "Torre de Vigia",
+    "description": "Uma torre antiga com vista para o vale.",
+    "type": "structure",
+    "category": "primary"
   },
   {
     "id": "loc_002",
     "lat": 60,
     "lng": 70,
-    "nome": "Caverna Escondida",
-    "descricao": "Entrada coberta por musgo.",
-    "tipo": "ponto_interesse",
-    "categoria": "principal"
+    "name": "Caverna Escondida",
+    "description": "Entrada coberta por musgo.",
+    "type": "interest_point",
+    "category": "primary"
   },
   {
     "id": "loc_003",
     "lat": 80,
     "lng": 20,
-    "nome": "Acampamento Base",
-    "descricao": "Local seguro para descansar.",
-    "tipo": "acampamento",
-    "categoria": "principal"
+    "name": "Acampamento Base",
+    "description": "Local seguro para descansar.",
+    "type": "camping",
+    "category": "primary"
   },
   {
     "id": "loc_003",
     "lat": 40,
     "lng": 60,
-    "nome": "Acampamento Base",
-    "descricao": "Um ponto de interesse na região.",
-    "tipo": "ponto_interesse",
-    "categoria": "principal"
+    "name": "Acampamento Base",
+    "description": "Um ponto de interesse na região.",
+    "type": "interest_point",
+    "category": "primary"
   }
 ]
