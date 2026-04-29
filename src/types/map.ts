@@ -1,5 +1,6 @@
 /**
  * Represents the category of a location.
+ * primary, secondary, collectible, service, event, other, category, map
  */
 export type LocationCategory =
  | 'primary'
@@ -13,6 +14,7 @@ export type LocationCategory =
 
  /**
   * Represents a location on the map.
+  * id, lat, lng, name, description, type, category, iconKey
   */
  export interface MapLocation {
     id?: string;
@@ -27,15 +29,23 @@ export type LocationCategory =
 
  /**
   * Represents the filters for the map.
+  * id, lat, lng, name, description, type, category, iconKey, searchText
   */
  export interface MapFilters {
+    id?: string;
+    lat?: number;
+    lng?: number;
+    name: string;
+    description?: string;
+    type?: string;
+    category?: LocationCategory;
+    iconKey?: string;
     searchText: string;
-    activeCategories: Set<LocationCategory>;
-    activeTypes: Set<string>;
 }
 
  /**
   * Represents the props for the map view.
+  * center, zoom
   */
 export interface MapViewProps {
     center: [number, number];
