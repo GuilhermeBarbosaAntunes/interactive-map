@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
+import { MapLocation } from '../../types/map';
 
 
 // Defines the default icon for all markers.
@@ -33,17 +34,19 @@ interface MarkerData {
 
 // Props accepted by the map view component.
 interface MapViewProps {
-  markers: MarkerData[];
+  locations: MapLocation[];
+  selectedLocation: MapLocation | null;
+  onLocationSelect: (locationId: string | undefined) => void;
 }
 
 // Limits the visible area to the local tile coordinate system.
 const MAP_BOUNDS: L.LatLngBoundsLiteral = [[0, 0], [100, 100]];
 
-function MapView({ markers }: MapViewProps) {
+function MapView({ locations, selectedLocation, onLocationSelect }: MapViewProps) {
   useEffect(() => {
-    console.log('🗺️ MapView montado!');
-    console.log('📍 Marcadores recebidos:', markers.length);
-  }, [markers]);
+    console.log('🗺️ MapView mounted!');
+    console.log('📍 Locations received:', locations.length);
+  }, [locations]);
 
   return (
     <MapContainer
@@ -60,22 +63,29 @@ function MapView({ markers }: MapViewProps) {
         url="/tiles/{z}/{x}/{y}.webp"
         bounds={MAP_BOUNDS}
         noWrap={true}
-        errorTileUrl="https://via.placeholder.com/256x256/333/fff?text=Tile+não+encontrada"
+        errorTileUrl="https://via.placeholder.com/256x256/333/fff?text=Tile+not+found"
       />
 
       {/* Static marker used to validate map positioning during development. */}
       <Marker position={[50, 50]}>
         <Popup>
-          <strong>Centro do Mapa</strong>
-          <p>Este é um marcador de teste</p>
+          <strong>Map Center</strong>
+          <p>This is a test marker</p>
         </Popup>
       </Marker>
 
-      {markers.map((marker) => (
-        <Marker key={marker.id} position={[marker.lat, marker.lng]}>
+      {locations.map((location) => (
+        <Marker key={location.id} 
+        position={[location.lat ?? 0, location.lng ?? 0]}
+        eventHandlers={{
+          click: () => onLocationSelect(location.id)
+        }}>
           <Popup>
-            <h3>{marker.nome}</h3>
-            <p>{marker.descricao}</p>
+            <h3>{location.name}</h3>
+            <p>{location.description}</p>
+            <small>{location.type}</small>
+            <small>{location.category}</small>
+            <small>{location.iconKey}</small>
           </Popup>
         </Marker>
       ))}
