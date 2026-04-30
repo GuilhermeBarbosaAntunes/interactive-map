@@ -4,7 +4,7 @@ import type { MapFilters, MapLocation } from '../types/map';
 import { StaticLocationRepository } from '../services/staticLocationRepository';
 import { filterLocations } from '../utils/mapFilters';
 
-const defaultFilters: MapFilters = {
+    const defaultFilters: MapFilters = {
     searchText: '',
     category: undefined,
     type: undefined,
@@ -45,7 +45,7 @@ export default function MapPage() {
         if(!selectedLocationId){ return null};
         
     return allLocations.find((location) => location.id === selectedLocationId) ?? null;
-}, [allLocations, selectedLocationId]);
+}, [selectedLocationId, allLocations]);
     if(isloading) {
         return (
             <div style={{
@@ -69,7 +69,12 @@ export default function MapPage() {
         <aside style={{borderRight: '1px solid #2a2a2a', padding: '16px', overflowY: 'auto'}}>
            <h2>Interactive Filters</h2>
 
-           <input style={{ width: '100%', marginBottom: '16px'}} type="text" placeholder="Search locations" value={filters.searchText} onChange={(e) => setFilters({...filters, searchText: e.target.value})} />
+           <input style={{ width: '100%', marginBottom: '16px'}} type="text" placeholder="Search locations" value={filters.searchText} 
+             onChange={(e) => setFilters((previousFilters: MapFilters) => ({
+                    ...previousFilters,
+                    searchText: e.target.value,
+                     }))} 
+            />
            <p>Total locations: {allLocations.length}</p>
            <p>Visible locations: {visibleLocations.length}</p>
 
