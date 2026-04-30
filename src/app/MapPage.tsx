@@ -16,10 +16,11 @@ import { filterLocations } from '../utils/mapFilters';
 };
 
 export default function MapPage() {
-    const [selectedLocationId, setSelectedLocationId] = useState<string | undefined>(undefined);
-    const [allLocations, setAllLocations] = useState<MapLocation[]>([]);
+
+    const[selectedLocationId, setSelectedLocationId] = useState<string | undefined>(undefined);
+    const[allLocations, setAllLocations] = useState<MapLocation[]>([]);
     const[filters, setFilters] = useState<MapFilters>(defaultFilters);
-    const[isloading, setIsLoading] = useState(true);
+    const[isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const repository = new StaticLocationRepository();
@@ -46,7 +47,7 @@ export default function MapPage() {
         
     return allLocations.find((location) => location.id === selectedLocationId) ?? null;
 }, [selectedLocationId, allLocations]);
-    if(isloading) {
+    if(isLoading) {
         return (
             <div style={{
                 display: 'flex',
