@@ -1,13 +1,35 @@
 # Interactive Map
 
-Interactive map web application built with React, Vite, and Leaflet.
+A web-based interactive map built with React, TypeScript, Vite, and Leaflet.
+
+## Overview
+
+This project renders a custom tile-based map and overlays interactive location markers loaded from a local dataset.  
+It includes client-side filtering and a repository layer prepared for future API integration.
+
+## Features
+
+- Custom map rendering with local tile assets (`CRS.Simple`)
+- Marker popup with location details
+- Search-based filtering
+- Repository pattern for location data access
+- Unit test setup with Vitest
+
+## Tech Stack
+
+- React 19
+- TypeScript
+- Vite
+- Leaflet + React Leaflet
+- Vitest + Testing Library
+- ESLint
 
 ## Requirements
 
 - Node.js `20.19+` or `22.12+`
-- `pnpm` (recommended package manager)
+- `pnpm` (recommended)
 
-## Quick Start
+## Getting Started
 
 ```bash
 # Install dependencies
@@ -16,26 +38,39 @@ pnpm install
 # Start development server
 pnpm dev
 ```
-
-After starting the server, open the local URL shown in the terminal (usually `http://localhost:5173`).
-
 ## Available Scripts
 
 ```bash
-pnpm dev       # Run development server
-pnpm build     # Type-check and build production assets
-pnpm preview   # Preview production build locally
-pnpm lint      # Run ESLint
+pnpm build          # Type-check and build for production
+pnpm preview        # Preview production build locally
+pnpm lint           # Run ESLint
+pnpm test           # Run tests once
+pnpm test:watch     # Run tests in watch mode
+pnpm test:coverage  # Run tests with coverage report
 ```
 
 ## Project Structure
 
 ```text
 src/
+  app/
+    MapPage.tsx
   components/
     Map/
       MapView.tsx
   data/
+    markers.json
+  services/
+    locationRepository.ts
+    staticLocationRepository.ts
+  types/
+    map.ts
+  utils/
+    mapFilters.ts
+
+test/
+  matchesFilters.test.ts
+
 public/
   tiles/
 ```
