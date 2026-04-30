@@ -5,6 +5,7 @@ import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 import { MapLocation } from '../../types/map';
+import BackgroundPane from '../../assets/backgroundPane';
 
 
 // Defines the default icon for all markers.
@@ -52,15 +53,14 @@ function MapView({ locations, onLocationSelect }: MapViewProps) {
       zoomControl={true}
       attributionControl={false}
     >
+      <BackgroundPane />
+
       <TileLayer
         url="/tiles/{z}/{x}/{y}.webp"
         bounds={MAP_BOUNDS}
         noWrap={true}
       />
 
-      {/*
-       * Static marker used to validate map positioning during development.
-       */}
       <Marker position={[50, 50]}>
         <Popup>
           <strong>Map Center</strong>
@@ -70,7 +70,7 @@ function MapView({ locations, onLocationSelect }: MapViewProps) {
 
       {locations.map((location) => (
         <Marker 
-        key={location.name} icon={DefaultIcon}
+        key={location.id} icon={DefaultIcon}
         position={[location.lat ?? 0, location.lng ?? 0]}
         eventHandlers={{
           click: () => onLocationSelect(location.id)
@@ -78,9 +78,6 @@ function MapView({ locations, onLocationSelect }: MapViewProps) {
           <Popup>
             <h3>{location.name}</h3>
             <p>{location.description}</p>
-            <small>Type: {location.type}</small>
-            <small>Category: {location.category}</small>
-            <small>Icon Key: {location.iconKey}</small>
           </Popup>
         </Marker>
       ))}
