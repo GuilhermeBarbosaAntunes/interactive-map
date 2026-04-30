@@ -1,20 +1,38 @@
 import type { MapFilters, MapLocation } from "../types/map";
 
+function normalizeText(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
 
 export function filterLocations(locations: MapLocation[], filters: MapFilters): MapLocation[] {
-    
-    const normalizedSearchText = filters.searchText.trim().toLowerCase();
+  const normalizedSearchText = normalizeText(filters.searchText ?? "");
 
-    return locations.filter((location) => {
+  return locations.filter((location) => {
+    const matchesCategory = !filters.category || filters.category === location.category;
+    const matchesType = !filters.type || filters.type === location.type;
+    const matchesId = !filters.id || filters.id === location.id;
+    const matchesLat = filters.lat == null || filters.lat === location.lat;
+    const matchesLng = filters.lng == null || filters.lng === location.lng;
 
-        const matchesCategory = filters.category === location.category;        
-        const matchesSearchText = normalizedSearchText.length === 0 || location.name.toLowerCase().includes(normalizedSearchText) || (location.description?.toLowerCase().includes(normalizedSearchText));
-        const matchesType = filters.type === location.type;
-        const matchesId = location.id && filters.id === location.id;
-        const matchesLat = filters.lat === location.lat;
-        const matchesLng = filters.lng === location.lng;
+    const normalizedName = normalizeText(location.name);
+    const normalizedDescription = normalizeText(location.description ?? "");
 
-        return matchesCategory && matchesSearchText && matchesType && matchesId && matchesLat && matchesLng;
-    })
+    const matchesSearchText =
+      normalizedSearchText.length === 0 ||
+      normalizedName.includes(normalizedSearchText) ||
+      normalizedDescription.includes(normalizedSearchText);
 
+    return (
+      matchesCategory &&
+      matchesType &&
+      matchesId &&
+      matchesLat &&
+      matchesLng &&
+      matchesSearchText
+    );
+  });
 }
