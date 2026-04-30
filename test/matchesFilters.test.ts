@@ -113,3 +113,14 @@ describe("filterLocations with multiple locations", () => {
         expect(result).toHaveLength(0);
     });
 });
+
+describe.only("filterLocations with invalid locations", () => {
+    it("returns no locations when locations is undefined", () => {
+        const result = filterLocations([], { searchText: "januaria" });
+        expect(result).toHaveLength(0);
+    });
+    it("returns no locations when locations is null", () => {
+        const result = filterLocations([], { searchText: "januaria" });
+        expect(result).toHaveLength(0);
+    });
+});
