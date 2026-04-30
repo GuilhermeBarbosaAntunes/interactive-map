@@ -24,13 +24,13 @@ const DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 // Represents one point shown on the map.
-interface MarkerData {
-  id: string;
-  lat: number;
-  lng: number;
-  nome: string;
-  descricao: string;
-}
+// interface MarkerData {
+//   id: string;
+//   lat: number;
+//   lng: number;
+//   nome: string;
+//   descricao: string;
+// }
 
 // Props accepted by the map view component.
 interface MapViewProps {
@@ -42,7 +42,7 @@ interface MapViewProps {
 // Limits the visible area to the local tile coordinate system.
 const MAP_BOUNDS: L.LatLngBoundsLiteral = [[0, 0], [100, 100]];
 
-function MapView({ locations, selectedLocation, onLocationSelect }: MapViewProps) {
+function MapView({ locations, onLocationSelect }: MapViewProps) {
   useEffect(() => {
     console.log('🗺️ MapView mounted!');
     console.log('📍 Locations received:', locations.length);
