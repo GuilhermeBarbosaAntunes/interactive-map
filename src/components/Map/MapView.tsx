@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
-import { MapLocation } from '../../types/map';
+import type { MapLocation } from '../../types/map';
 import BackgroundPane from '../../assets/backgroundPane';
 
 
@@ -76,7 +76,7 @@ function MapView({ locations, onLocationSelect }: MapViewProps) {
           click: () => onLocationSelect(location.id)
         }}>
           <Popup>
-            <h3>{location.name}</h3>
+            <h3>{location.city}</h3>
             <p>{location.description}</p>
           </Popup>
         </Marker>

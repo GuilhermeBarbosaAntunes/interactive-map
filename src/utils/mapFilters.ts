@@ -18,12 +18,12 @@ export function filterLocations(locations: MapLocation[], filters: MapFilters): 
     const matchesLat = filters.lat == null || filters.lat === location.lat;
     const matchesLng = filters.lng == null || filters.lng === location.lng;
 
-    const normalizedName = normalizeText(location.name);
+    const normalizedCity = normalizeText(location.city);
     const normalizedDescription = normalizeText(location.description ?? "");
 
     const matchesSearchText =
       normalizedSearchText.length === 0 ||
-      normalizedName.includes(normalizedSearchText) ||
+      normalizedCity.includes(normalizedSearchText) ||
       normalizedDescription.includes(normalizedSearchText);
 
     return (

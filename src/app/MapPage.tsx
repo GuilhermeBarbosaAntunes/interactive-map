@@ -11,7 +11,7 @@ import { filterLocations } from '../utils/mapFilters';
     id: undefined,
     lat: undefined,
     lng: undefined,
-    name: '',
+    city: '',
     description: '',
 };
 
@@ -81,7 +81,7 @@ export default function MapPage() {
 
            {selectedLocation ? (
             <div style={{marginTop: '16px'}}>
-                <h3>{selectedLocation.name}</h3>
+                <h3>{selectedLocation.city}</h3>
                 <p>{selectedLocation.description}</p>
                
             </div>

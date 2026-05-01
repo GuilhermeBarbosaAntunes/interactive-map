@@ -8,7 +8,7 @@ function normalizeRawLocation(raw: any): MapLocation {
         id: typeof raw.id === "string" ? raw.id : undefined,
         lat: typeof raw.lat === "number" ? raw.lat : undefined,
         lng: typeof raw.lng === "number" ? raw.lng : undefined,
-        name: typeof raw.name === "string" ? raw.name : "",
+        city: typeof raw.city === "string" ? raw.city : "",
         description: typeof raw.description === "string" ? raw.description : "",
         type: typeof raw.type === "string" ? raw.type : "",
         category: String(raw.category) as MapLocation["category"],
@@ -21,7 +21,7 @@ function validateLocations(locations: MapLocation[]): void {
     const validationErrors: string[] = [];
     locations.forEach((location, index) => {
         const locationPosition = index + 1;
-        const trimmedName = location.name?.trim() ?? "";
+        const trimmedName = location.city?.trim() ?? "";
         if (!trimmedName) {
             validationErrors.push(`Location at position ${locationPosition} must have a name.`);
         } else {
@@ -60,13 +60,13 @@ function validateLocations(locations: MapLocation[]): void {
 function matchesFilters(location: any, filters: MapFilters): boolean {
     const normalizedSearchText = filters.searchText?.toLowerCase() ?? "";
     return (
-        (normalizedSearchText.length === 0 || location.name.toLowerCase().includes(normalizedSearchText)) &&
+        (normalizedSearchText.length === 0 || location.city.toLowerCase().includes(normalizedSearchText)) &&
         (!filters.category || filters.category === location.category) &&
         (!filters.type || filters.type === location.type) &&
         (!filters.id || filters.id === location.id) &&
         (filters.lat == null || filters.lat === location.lat) &&
         (filters.lng == null || filters.lng === location.lng) &&
-        (!filters.name || filters.name === location.name) &&
+        (!filters.city || filters.city === location.city) &&
         (!filters.description || filters.description === location.description)
     );
 }
@@ -79,20 +79,20 @@ export class StaticLocationRepository implements LocationRepository {
         }
     }
     async getAllLocations(): Promise<MapLocation[]> {
-        return this.getLocationsByFilters({ name: "", searchText: "" });
+        return this.getLocationsByFilters({ city: "", searchText: "" });
     }
     async getLocationById(id: string): Promise<MapLocation | undefined> {
-        const [location] = await this.getLocationsByFilters({ id, name: "", searchText: "" });
+        const [location] = await this.getLocationsByFilters({ id, city: "", searchText: "" });
         return location;
     }
     async getLocationsByCategory(category: LocationCategory): Promise<MapLocation[]> {
-        return this.getLocationsByFilters({ category, name: "", searchText: "" });
+        return this.getLocationsByFilters({ category, city: "", searchText: "" });
     }
     async getLocationsByType(type: string): Promise<MapLocation[]> {
-        return this.getLocationsByFilters({ type, name: "", searchText: "" });
+        return this.getLocationsByFilters({ type, city: "", searchText: "" });
     }
     async getLocationsBySearchText(searchText: string): Promise<MapLocation[]> {
-        return this.getLocationsByFilters({ searchText, name: "" });
+        return this.getLocationsByFilters({ searchText, city: "" });
     }
     async getLocationsByFilters(filters: MapFilters): Promise<MapLocation[]> {
         return marketsData.filter((location) => matchesFilters(location, filters)).map(normalizeRawLocation);

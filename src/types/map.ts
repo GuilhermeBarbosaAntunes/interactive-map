@@ -18,29 +18,29 @@ export type LocationCategory =
     /**
      * Represents a location on the map.
      * id?: string;
-     * name: string;
+     * city: string;
      * description?: string;
      * lat?: number; 
      * lng?: number; 
      * type?: string; 
-     * category?: LocationCategory; 
+     * category?: "primary" | "secondary"; 
      * iconKey?: string; 
      */
 export interface MapLocation {
-    id?: string; 
-    name: string; 
-    description?: string; 
-    lat?: number; 
+    id: string;
+    city: string;
+    description: string;
+    lat?: number;
     lng?: number;
-    type?: string; 
-    category?: LocationCategory; 
-    iconKey?: string; 
-}
+    type?: string;
+    category?: "primary" | "secondary";
+    iconKey?: string;
+    }
  /**
   * Represents the filters for the map.
   * searchText?: string; 
   * id?: string; 
-  * name?: string; 
+  * city?: string; 
   * description?: string; 
   * lat?: number; 
   * lng?: number; 
@@ -51,7 +51,7 @@ export interface MapLocation {
 export interface MapFilters {
     searchText?: string; 
     id?: string;
-    name?: string; 
+    city?: string; 
     description?: string;
     lat?: number;
     lng?: number;

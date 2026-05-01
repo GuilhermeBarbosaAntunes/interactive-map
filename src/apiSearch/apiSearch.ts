@@ -18,8 +18,7 @@ interface GeocodeApiItem {
   place_id: number;
   lat: string;
   lon: string;
-  name?: string;
-  display_name: string;
+  city?: string;
   type?: string;
 }
 
@@ -40,8 +39,8 @@ export const searchLocations = async (searchText: string): Promise<MapLocation[]
 
     return response.data.map((item) => ({
       id: String(item.place_id),
-      name: item.name ?? item.display_name,
-      description: item.display_name ?? "",
+      city: item.city ?? "",
+      description: item.city ?? "",
       lat: Number(item.lat),
       lng: Number(item.lon),
       type: item.type ?? "city",
