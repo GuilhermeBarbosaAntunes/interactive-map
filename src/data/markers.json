@@ -1,38 +1,32 @@
 [
   {
     "id": "loc_001",
-    "lat": 30,
-    "lng": 40,
-    "name": "Vigylant Tower",
-    "description": "A tower of Vigylant, a powerful entity that protects the land from darkness.",
-    "type": "structure",
-    "category": "primary"
+    "city":"Januária",
+    "state":"Minas Gerais",
+    "country":"Brazil",
+    "postalcode":"38600"
   },
   {
     "id": "loc_002",
-    "lat": 60,
-    "lng": 70,
-    "name": "Hidden Cave",
-    "description": "A hidden cave with a mysterious entrance.",
-    "type": "interest_point",
-    "category": "primary"
+    "city":"Janauba",
+    "state":"Minas Gerais",
+    "country":"Brazil",
+    "postalcode":"38700"
   },
   {
     "id": "loc_003",
-    "lat": 80,
-    "lng": 20,
-    "name": "Base Camp",
-    "description": "A safe place to rest.",
-    "type": "camping",
-    "category": "primary"
+    "city":"Pirapora",
+    "state":"Minas Gerais",
+    "country":"Brazil",
+    "postalcode":"36300"
   },
   {
     "id": "loc_004",
-    "lat": 40,
-    "lng": 60,
-    "name": "Fortress",
-    "description": "A safe place to rest.",
-    "type": "interest_point",
-    "category": "primary"
+    "city":"Porteirinha",
+    "state":"Minas Gerais",
+    "country":"Brazil",
+    "postalcode":"36900"
   }
 ]
+
+// API Key:	69f499fe0e751769961012fuvef4563
