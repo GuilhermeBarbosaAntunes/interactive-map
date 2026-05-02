@@ -13,6 +13,7 @@ import { filterLocations } from '../utils/mapFilters';
     lng: undefined,
     city: '',
     description: '',
+    iconKey: undefined,
 };
 
 export default function MapPage() {

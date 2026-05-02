@@ -1,30 +1,892 @@
 [
   {
-    "id": "loc_001",
-    "city":"Januária",
-    "state":"Minas Gerais",
-    "country":"Brazil",
-    "postalcode":"38600"
+    "id": "3108255",
+    "city": "Bonito de Minas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39490-000",
+    "description": "Município de Bonito de Minas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.3231,
+    "lng": -44.7543
   },
   {
-    "id": "loc_002",
-    "city":"Janauba",
-    "state":"Minas Gerais",
-    "country":"Brazil",
-    "postalcode":"38700"
+    "id": "3116159",
+    "city": "Chapada Gaúcha",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39314-000",
+    "description": "Município de Chapada Gaúcha, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.3014,
+    "lng": -45.6116
   },
   {
-    "id": "loc_003",
-    "city":"Pirapora",
-    "state":"Minas Gerais",
-    "country":"Brazil",
-    "postalcode":"36300"
+    "id": "3117836",
+    "city": "Cônego Marinho",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39489-000",
+    "description": "Município de Cônego Marinho, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.2892,
+    "lng": -44.4181
   },
   {
-    "id": "loc_004",
-    "city":"Porteirinha",
-    "state":"Minas Gerais",
-    "country":"Brazil",
-    "postalcode":"36900"
+    "id": "3130051",
+    "city": "Icaraí de Minas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39318-000",
+    "description": "Município de Icaraí de Minas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.214,
+    "lng": -44.9034
+  },
+  {
+    "id": "3132107",
+    "city": "Itacarambi",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39470-000",
+    "description": "Município de Itacarambi, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.089,
+    "lng": -44.095
+  },
+  {
+    "id": "3135209",
+    "city": "Januária",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39480-000",
+    "description": "Município de Januária, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.4802,
+    "lng": -44.3639
+  },
+  {
+    "id": "3136959",
+    "city": "Juvenília",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39467-000",
+    "description": "Município de Juvenília, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -14.2662,
+    "lng": -44.1597
+  },
+  {
+    "id": "3139300",
+    "city": "Manga",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39460-000",
+    "description": "Município de Manga, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -14.7529,
+    "lng": -43.9391
+  },
+  {
+    "id": "3140852",
+    "city": "Matias Cardoso",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39478-000",
+    "description": "Município de Matias Cardoso, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -14.8563,
+    "lng": -43.9146
+  },
+  {
+    "id": "3142254",
+    "city": "Miravânia",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39465-000",
+    "description": "Município de Miravânia, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -14.7348,
+    "lng": -44.4092
+  },
+  {
+    "id": "3142700",
+    "city": "Montalvânia",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39495-000",
+    "description": "Município de Montalvânia, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -14.4197,
+    "lng": -44.3719
+  },
+  {
+    "id": "3149150",
+    "city": "Pedras de Maria da Cruz",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39492-000",
+    "description": "Município de Pedras de Maria da Cruz, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.6032,
+    "lng": -44.391
+  },
+  {
+    "id": "3150570",
+    "city": "Pintópolis",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39317-000",
+    "description": "Município de Pintópolis, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.0572,
+    "lng": -45.1402
+  },
+  {
+    "id": "3161106",
+    "city": "São Francisco",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39300-000",
+    "description": "Município de São Francisco, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.9514,
+    "lng": -44.8593
+  },
+  {
+    "id": "3162450",
+    "city": "São João das Missões",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39475-000",
+    "description": "Município de São João das Missões, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -14.8859,
+    "lng": -44.0922
+  },
+  {
+    "id": "3170529",
+    "city": "Urucuia",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39315-000",
+    "description": "Município de Urucuia, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.1244,
+    "lng": -45.7352
+  },
+  {
+    "id": "3115474",
+    "city": "Catuti",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39526-000",
+    "description": "Município de Catuti, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.3616,
+    "lng": -42.9627
+  },
+  {
+    "id": "3124302",
+    "city": "Espinosa",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39510-000",
+    "description": "Município de Espinosa, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -14.9249,
+    "lng": -42.809
+  },
+  {
+    "id": "3127339",
+    "city": "Gameleiras",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39505-000",
+    "description": "Município de Gameleiras, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.0829,
+    "lng": -43.125
+  },
+  {
+    "id": "3135050",
+    "city": "Jaíba",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39508-000",
+    "description": "Município de Jaíba, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.3432,
+    "lng": -43.6688
+  },
+  {
+    "id": "3135100",
+    "city": "Janaúba",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39440-000",
+    "description": "Município de Janaúba, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.8022,
+    "lng": -43.3132
+  },
+  {
+    "id": "3139250",
+    "city": "Mamonas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39516-000",
+    "description": "Município de Mamonas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.0479,
+    "lng": -42.9469
+  },
+  {
+    "id": "3141009",
+    "city": "Mato Verde",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39527-000",
+    "description": "Município de Mato Verde, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.3944,
+    "lng": -42.86
+  },
+  {
+    "id": "3142908",
+    "city": "Monte Azul",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39500-000",
+    "description": "Município de Monte Azul, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.1514,
+    "lng": -42.8718
+  },
+  {
+    "id": "3145059",
+    "city": "Nova Porteirinha",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39525-000",
+    "description": "Município de Nova Porteirinha, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.7993,
+    "lng": -43.2941
+  },
+  {
+    "id": "3146552",
+    "city": "Pai Pedro",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39517-000",
+    "description": "Município de Pai Pedro, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.5271,
+    "lng": -43.07
+  },
+  {
+    "id": "3152204",
+    "city": "Porteirinha",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39520-000",
+    "description": "Município de Porteirinha, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.7404,
+    "lng": -43.0281
+  },
+  {
+    "id": "3154507",
+    "city": "Riacho dos Machados",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39529-000",
+    "description": "Município de Riacho dos Machados, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.0091,
+    "lng": -43.0488
+  },
+  {
+    "id": "3166956",
+    "city": "Serranópolis de Minas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39518-000",
+    "description": "Município de Serranópolis de Minas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.8176,
+    "lng": -42.8732
+  },
+  {
+    "id": "3101003",
+    "city": "Águas Vermelhas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39990-000",
+    "description": "Município de Águas Vermelhas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.7431,
+    "lng": -41.4571
+  },
+  {
+    "id": "3106655",
+    "city": "Berizal",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39555-000",
+    "description": "Município de Berizal, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.61,
+    "lng": -41.7432
+  },
+  {
+    "id": "3120870",
+    "city": "Curral de Dentro",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39569-000",
+    "description": "Município de Curral de Dentro, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.9327,
+    "lng": -41.8557
+  },
+  {
+    "id": "3122355",
+    "city": "Divisa Alegre",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39995-000",
+    "description": "Município de Divisa Alegre, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.7221,
+    "lng": -41.3463
+  },
+  {
+    "id": "3127073",
+    "city": "Fruta de Leite",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39558-000",
+    "description": "Município de Fruta de Leite, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.1225,
+    "lng": -42.5288
+  },
+  {
+    "id": "3130655",
+    "city": "Indaiabira",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39536-000",
+    "description": "Município de Indaiabira, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.4911,
+    "lng": -42.2005
+  },
+  {
+    "id": "3143450",
+    "city": "Montezuma",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39547-000",
+    "description": "Município de Montezuma, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.1702,
+    "lng": -42.4941
+  },
+  {
+    "id": "3144656",
+    "city": "Ninheira",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39553-000",
+    "description": "Município de Ninheira, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.3148,
+    "lng": -41.7564
+  },
+  {
+    "id": "3145372",
+    "city": "Novorizonte",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39568-000",
+    "description": "Município de Novorizonte, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.0162,
+    "lng": -42.4044
+  },
+  {
+    "id": "3155603",
+    "city": "Rio Pardo de Minas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39530-000",
+    "description": "Município de Rio Pardo de Minas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.616,
+    "lng": -42.5405
+  },
+  {
+    "id": "3156502",
+    "city": "Rubelita",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39565-000",
+    "description": "Município de Rubelita, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.4053,
+    "lng": -42.261
+  },
+  {
+    "id": "3157005",
+    "city": "Salinas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39560-000",
+    "description": "Município de Salinas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.1753,
+    "lng": -42.2964
+  },
+  {
+    "id": "3157377",
+    "city": "Santa Cruz de Salinas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39563-000",
+    "description": "Município de Santa Cruz de Salinas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.0967,
+    "lng": -41.7418
+  },
+  {
+    "id": "3160454",
+    "city": "Santo Antônio do Retiro",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39538-000",
+    "description": "Município de Santo Antônio do Retiro, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.3393,
+    "lng": -42.6171
+  },
+  {
+    "id": "3162708",
+    "city": "São João do Paraíso",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39540-000",
+    "description": "Município de São João do Paraíso, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.3168,
+    "lng": -42.0213
+  },
+  {
+    "id": "3168002",
+    "city": "Taiobeiras",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39550-000",
+    "description": "Município de Taiobeiras, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.8106,
+    "lng": -42.2259
+  },
+  {
+    "id": "3170651",
+    "city": "Vargem Grande do Rio Pardo",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39535-000",
+    "description": "Município de Vargem Grande do Rio Pardo, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.3987,
+    "lng": -42.3085
+  },
+  {
+    "id": "3109402",
+    "city": "Buritizeiro",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39280-000",
+    "description": "Município de Buritizeiro, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.3656,
+    "lng": -44.9606
+  },
+  {
+    "id": "3129608",
+    "city": "Ibiaí",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39350-000",
+    "description": "Município de Ibiaí, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.8591,
+    "lng": -44.9046
+  },
+  {
+    "id": "3135605",
+    "city": "Jequitaí",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39370-000",
+    "description": "Município de Jequitaí, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.229,
+    "lng": -44.4376
+  },
+  {
+    "id": "3137304",
+    "city": "Lagoa dos Patos",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39360-000",
+    "description": "Município de Lagoa dos Patos, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.978,
+    "lng": -44.5754
+  },
+  {
+    "id": "3138104",
+    "city": "Lassance",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39250-000",
+    "description": "Município de Lassance, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.887,
+    "lng": -44.5735
+  },
+  {
+    "id": "3151206",
+    "city": "Pirapora",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39270-000",
+    "description": "Município de Pirapora, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.3392,
+    "lng": -44.934
+  },
+  {
+    "id": "3154457",
+    "city": "Riachinho",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "38640-000",
+    "description": "Município de Riachinho, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.2258,
+    "lng": -45.9888
+  },
+  {
+    "id": "3157609",
+    "city": "Santa Fé de Minas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39295-000",
+    "description": "Município de Santa Fé de Minas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.6859,
+    "lng": -45.4102
+  },
+  {
+    "id": "3164209",
+    "city": "São Romão",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39290-000",
+    "description": "Município de São Romão, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.3641,
+    "lng": -45.0749
+  },
+  {
+    "id": "3170800",
+    "city": "Várzea da Palma",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39260-000",
+    "description": "Município de Várzea da Palma, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.5944,
+    "lng": -44.7226
+  },
+  {
+    "id": "3108602",
+    "city": "Brasília de Minas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39330-000",
+    "description": "Município de Brasília de Minas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.2104,
+    "lng": -44.4299
+  },
+  {
+    "id": "3111150",
+    "city": "Campo Azul",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39338-000",
+    "description": "Município de Campo Azul, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.5028,
+    "lng": -44.8096
+  },
+  {
+    "id": "3112703",
+    "city": "Capitão Enéas",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39472-000",
+    "description": "Município de Capitão Enéas, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.3265,
+    "lng": -43.7084
+  },
+  {
+    "id": "3116506",
+    "city": "Claro dos Poções",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39380-000",
+    "description": "Município de Claro dos Poções, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.082,
+    "lng": -44.2061
+  },
+  {
+    "id": "3118809",
+    "city": "Coração de Jesus",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39340-000",
+    "description": "Município de Coração de Jesus, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.6841,
+    "lng": -44.3635
+  },
+  {
+    "id": "3126703",
+    "city": "Francisco Sá",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39580-000",
+    "description": "Município de Francisco Sá, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.4827,
+    "lng": -43.4896
+  },
+  {
+    "id": "3127354",
+    "city": "Glaucilândia",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39592-000",
+    "description": "Município de Glaucilândia, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.8481,
+    "lng": -43.692
+  },
+  {
+    "id": "3129657",
+    "city": "Ibiracatu",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39455-000",
+    "description": "Município de Ibiracatu, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.6605,
+    "lng": -44.1667
+  },
+  {
+    "id": "3135357",
+    "city": "Japonvar",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39335-000",
+    "description": "Município de Japonvar, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.9891,
+    "lng": -44.2758
+  },
+  {
+    "id": "3136801",
+    "city": "Juramento",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39590-000",
+    "description": "Município de Juramento, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.8473,
+    "lng": -43.5865
+  },
+  {
+    "id": "3138658",
+    "city": "Lontra",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39437-000",
+    "description": "Município de Lontra, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.9013,
+    "lng": -44.306
+  },
+  {
+    "id": "3138682",
+    "city": "Luislândia",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39336-000",
+    "description": "Município de Luislândia, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.1095,
+    "lng": -44.5886
+  },
+  {
+    "id": "3142007",
+    "city": "Mirabela",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39373-000",
+    "description": "Município de Mirabela, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.256,
+    "lng": -44.1602
+  },
+  {
+    "id": "3143302",
+    "city": "Montes Claros",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39400-000",
+    "description": "Município de Montes Claros, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.7282,
+    "lng": -43.8578
+  },
+  {
+    "id": "3147956",
+    "city": "Patis",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39378-000",
+    "description": "Município de Patis, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.0773,
+    "lng": -44.0787
+  },
+  {
+    "id": "3152131",
+    "city": "Ponto Chique",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39328-000",
+    "description": "Município de Ponto Chique, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.6282,
+    "lng": -45.0588
+  },
+  {
+    "id": "3162252",
+    "city": "São João da Lagoa",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39355-000",
+    "description": "Município de São João da Lagoa, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.8455,
+    "lng": -44.3507
+  },
+  {
+    "id": "3162401",
+    "city": "São João da Ponte",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39430-000",
+    "description": "Município de São João da Ponte, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.9271,
+    "lng": -44.0096
+  },
+  {
+    "id": "3162658",
+    "city": "São João do Pacuí",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39365-000",
+    "description": "Município de São João do Pacuí, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.5373,
+    "lng": -44.5134
+  },
+  {
+    "id": "3170008",
+    "city": "Ubaí",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39320-000",
+    "description": "Município de Ubaí, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.2885,
+    "lng": -44.7783
+  },
+  {
+    "id": "3170909",
+    "city": "Varzelândia",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39450-000",
+    "description": "Município de Varzelândia, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.6992,
+    "lng": -44.0278
+  },
+  {
+    "id": "3171030",
+    "city": "Verdelândia",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39458-000",
+    "description": "Município de Verdelândia, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -15.5845,
+    "lng": -43.6121
+  },
+  {
+    "id": "3108503",
+    "city": "Botumirim",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39595-000",
+    "description": "Município de Botumirim, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.8657,
+    "lng": -43.0086
+  },
+  {
+    "id": "3120300",
+    "city": "Cristália",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39598-000",
+    "description": "Município de Cristália, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.716,
+    "lng": -42.8571
+  },
+  {
+    "id": "3127800",
+    "city": "Grão Mogol",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39570-000",
+    "description": "Município de Grão Mogol, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.5662,
+    "lng": -42.8923
+  },
+  {
+    "id": "3132008",
+    "city": "Itacambira",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39594-000",
+    "description": "Município de Itacambira, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.0625,
+    "lng": -43.3069
+  },
+  {
+    "id": "3136579",
+    "city": "Josenópolis",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39575-000",
+    "description": "Município de Josenópolis, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.5417,
+    "lng": -42.5151
+  },
+  {
+    "id": "3146255",
+    "city": "Padre Carvalho",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39573-000",
+    "description": "Município de Padre Carvalho, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -16.3646,
+    "lng": -42.5088
+  },
+  {
+    "id": "3107307",
+    "city": "Bocaiúva",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39390-000",
+    "description": "Município de Bocaiúva, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.1135,
+    "lng": -43.8104
+  },
+  {
+    "id": "3123809",
+    "city": "Engenheiro Navarro",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39363-000",
+    "description": "Município de Engenheiro Navarro, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.2831,
+    "lng": -43.947
+  },
+  {
+    "id": "3126604",
+    "city": "Francisco Dumont",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39387-000",
+    "description": "Município de Francisco Dumont, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.3107,
+    "lng": -44.2317
+  },
+  {
+    "id": "3128253",
+    "city": "Guaraciama",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39397-000",
+    "description": "Município de Guaraciama, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.0142,
+    "lng": -43.6675
+  },
+  {
+    "id": "3145455",
+    "city": "Olhos d'Água",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39398-000",
+    "description": "Município de Olhos d'Água, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "lat": -17.3982,
+    "lng": -43.5719
   }
 ]

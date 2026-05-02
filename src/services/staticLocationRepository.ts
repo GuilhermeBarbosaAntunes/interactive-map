@@ -21,13 +21,13 @@ function validateLocations(locations: MapLocation[]): void {
     const validationErrors: string[] = [];
     locations.forEach((location, index) => {
         const locationPosition = index + 1;
-        const trimmedName = location.city?.trim() ?? "";
+        const trimmedName = location.city.trim() ?? "";
         if (!trimmedName) {
             validationErrors.push(`Location at position ${locationPosition} must have a name.`);
         } else {
-            const normalizedName = trimmedName.toLowerCase();
+            const normalizedName = trimmedName;
             if (seenNames.has(normalizedName)) {
-                validationErrors.push(`Name "${trimmedName}" is duplicated.`);
+                validationErrors.push(`Name "${normalizedName}" is duplicated.`);
             }
             seenNames.add(normalizedName);
         }
