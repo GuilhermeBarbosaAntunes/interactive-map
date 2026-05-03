@@ -340,6 +340,30 @@
     "lng": -42.5288
   },
   {
+    "id": "0000.31.0387",
+    "name": "Parque Estadual de Grão Mogol",
+    "city": "Grão Mogol",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39570-000",
+    "description": "Unidade de Conservação de Proteção Integral localizada em Grão Mogol, no Norte de Minas Gerais, Brasil. O parque está inserido principalmente na Serra Geral, conhecida na região como Serra da Bocaína, e protege áreas de Cerrado, campos rupestres, cursos d'água, nascentes, cânions, cachoeiras e trilhas históricas.",
+    "lat": -16.4075,
+    "lng": -42.8361,
+    "address": "MG-307, zona rural, Grão Mogol, Minas Gerais, Brasil"
+  },
+  {
+    "id": "parque-estadual-da-lapa-grande",
+    "name": "Parque Estadual da Lapa Grande",
+    "city": "Montes Claros",
+    "state": "Minas Gerais",
+    "country": "Brazil",
+    "postalcode": "39401-832",
+    "description": "Unidade de Conservação de Proteção Integral localizada na zona rural de Montes Claros, no Norte de Minas Gerais, Brasil. O parque protege complexo de grutas, cavernas, mananciais, flora e fauna locais.",
+    "lat": -16.702433,
+    "lng": -43.916106,
+    "address": "Estrada do Alfeirão, KM 07, Zona Rural, Montes Claros, Minas Gerais, Brasil"
+  },
+  {
     "id": "3130655",
     "city": "Indaiabira",
     "state": "Minas Gerais",
@@ -611,11 +635,11 @@
   },
   {
     "id": "3126703",
-    "city": "Francisco Sá",
+    "city": "Brejo das Almas",
     "state": "Minas Gerais",
     "country": "Brazil",
     "postalcode": "39580-000",
-    "description": "Município de Francisco Sá, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
+    "description": "Município de Brejo das Almas, atual Francisco Sá, localizado no Norte de Minas Gerais, Minas Gerais, Brasil.",
     "lat": -16.4827,
     "lng": -43.4896
   },
