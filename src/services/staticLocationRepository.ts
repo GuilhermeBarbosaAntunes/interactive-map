@@ -4,11 +4,17 @@ import type { LocationCategory, MapFilters, MapLocation } from '../types/map';
 
 
 function normalizeRawLocation(raw: any): MapLocation {
+    const normalizedCityName = typeof raw.city === "string" ? raw.city : "";
+    const normalizedDisplayName =
+        typeof raw.name === "string" && raw.name.trim().length > 0
+            ? raw.name
+            : normalizedCityName;
+
     return {
         id: typeof raw.id === "string" ? raw.id : undefined,
         lat: typeof raw.lat === "number" ? raw.lat : undefined,
         lng: typeof raw.lng === "number" ? raw.lng : undefined,
-        city: typeof raw.city === "string" ? raw.city : "",
+        city: normalizedDisplayName,
         description: typeof raw.description === "string" ? raw.description : "",
         type: typeof raw.type === "string" ? raw.type : "",
         category: String(raw.category) as MapLocation["category"],
@@ -17,19 +23,12 @@ function normalizeRawLocation(raw: any): MapLocation {
 }
 function validateLocations(locations: MapLocation[]): void {
     const seenIdentifiers = new Set<string>();
-    const seenNames = new Set<string>();
     const validationErrors: string[] = [];
     locations.forEach((location, index) => {
         const locationPosition = index + 1;
         const trimmedName = location.city.trim() ?? "";
         if (!trimmedName) {
             validationErrors.push(`Location at position ${locationPosition} must have a name.`);
-        } else {
-            const normalizedName = trimmedName;
-            if (seenNames.has(normalizedName)) {
-                validationErrors.push(`Name "${normalizedName}" is duplicated.`);
-            }
-            seenNames.add(normalizedName);
         }
         const trimmedIdentifier = location.id?.trim();
         if (trimmedIdentifier) {
