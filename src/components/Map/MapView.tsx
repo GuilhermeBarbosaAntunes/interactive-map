@@ -1,86 +1,108 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet'
-import 'leaflet/dist/leaflet.css';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
-import type { MapLocation } from '../../types/map';
-import BackgroundPane from '../../assets/backgroundPane';
+import { useEffect, useRef, useState } from "react";
+import { ImageOverlay, MapContainer, TileLayer } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
-
-// Defines the default icon for all markers.
-const DefaultIcon = L.icon({
-  iconUrl: icon,
-  iconRetinaUrl: iconRetina,
-  shadowUrl: iconShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  tooltipAnchor: [16, -28],
-  shadowSize: [41, 41],
-});
-
-/**
- * Sets the default icon for all markers.
- */
-L.Marker.prototype.options.icon = DefaultIcon;
-
-
-/**
- * Props accepted by the map view component.
- */
 interface MapViewProps {
-  locations: MapLocation[];
-  selectedLocation: MapLocation | null;
-  onLocationSelect: (locationId: string | undefined) => void;
+  highlightedMunicipalityCode?: string;
 }
+const JPG_WIDTH = 4677;
+const JPG_HEIGHT = 6622;
+const MAP_BOUNDS: L.LatLngBoundsLiteral = [[0, 0], [JPG_HEIGHT, JPG_WIDTH]];
 
-/**
- * Limits the visible area to the local tile coordinate system.
- */
-const MAP_BOUNDS: L.LatLngBoundsLiteral = [[0, 0], [100, 100]];
+function MapView({ highlightedMunicipalityCode }: MapViewProps) {
+  const [highlightOverlayUrl, setHighlightOverlayUrl] = useState<string | null>(null);
+  const highlightOverlayBlobByMunicipalityCodeRef = useRef<Map<string, Blob | null>>(new Map());
 
-function MapView({ locations, onLocationSelect }: MapViewProps) {
+  useEffect(() => {
+    let isCancelled = false;
+    let currentObjectUrl: string | null = null;
+
+    async function updateHighlightOverlay() {
+      const normalizedMunicipalityCode = highlightedMunicipalityCode?.trim();
+      if (!normalizedMunicipalityCode) {
+        setHighlightOverlayUrl(null);
+        return;
+      }
+
+      try {
+        let overlayBlob = highlightOverlayBlobByMunicipalityCodeRef.current.get(
+          normalizedMunicipalityCode,
+        );
+
+        if (overlayBlob === undefined) {
+          const highlightOverlayAssetUrl = `/highlights/${normalizedMunicipalityCode}.png`;
+          const response = await fetch(highlightOverlayAssetUrl);
+          if (response.status === 404) {
+            highlightOverlayBlobByMunicipalityCodeRef.current.set(normalizedMunicipalityCode, null);
+            if (!isCancelled) {
+              setHighlightOverlayUrl(null);
+            }
+            return;
+          }
+
+          if (!response.ok) {
+            throw new Error("Failed to fetch municipality highlight image");
+          }
+
+          overlayBlob = await response.blob();
+          highlightOverlayBlobByMunicipalityCodeRef.current.set(
+            normalizedMunicipalityCode,
+            overlayBlob,
+          );
+        }
+
+        if (!overlayBlob) {
+          if (!isCancelled) {
+            setHighlightOverlayUrl(null);
+          }
+          return;
+        }
+
+        currentObjectUrl = URL.createObjectURL(overlayBlob);
+        if (!isCancelled) {
+          setHighlightOverlayUrl(currentObjectUrl);
+        }
+      } catch (error) {
+        console.error("Error loading municipality highlight overlay:", error);
+        if (!isCancelled) {
+          setHighlightOverlayUrl(null);
+        }
+      }
+    }
+
+    void updateHighlightOverlay();
+
+    return () => {
+      isCancelled = true;
+      if (currentObjectUrl) {
+        URL.revokeObjectURL(currentObjectUrl);
+      }
+    };
+  }, [highlightedMunicipalityCode]);
 
   return (
     <MapContainer
-      center={[50, 50]}
-      zoom={1}
-      minZoom={0}
+      bounds={MAP_BOUNDS}
+      boundsOptions={{ padding: [24, 24] }}
+      minZoom={-2.7}
       maxZoom={4}
       crs={L.CRS.Simple}
-      style={{ height: '100vh', width: '100vw' }}
+      maxBounds={MAP_BOUNDS}
+      maxBoundsViscosity={1}
+      style={{ height: "100vh", width: "100%", backgroundColor: "#FCF4D4"}}
       zoomControl={true}
       attributionControl={false}
     >
-      <BackgroundPane />
-
+      <ImageOverlay url="/mapa.jpg" bounds={MAP_BOUNDS} opacity={1} />
       <TileLayer
         url="/tiles/{z}/{x}/{y}.webp"
         bounds={MAP_BOUNDS}
         noWrap={true}
       />
-
-      <Marker position={[50, 50]}>
-        <Popup>
-          <strong>Map Center</strong>
-          <p>This is a test marker</p>
-        </Popup>
-      </Marker>
-
-      {locations.map((location) => (
-        <Marker 
-        key={location.id} icon={DefaultIcon}
-        position={[location.lat ?? 0, location.lng ?? 0]}
-        eventHandlers={{
-          click: () => onLocationSelect(location.id)
-        }}>
-          <Popup>
-            <h3>{location.city}</h3>
-            <p>{location.description}</p>
-          </Popup>
-        </Marker>
-      ))}
+      {highlightOverlayUrl ? (
+        <ImageOverlay url={highlightOverlayUrl} bounds={MAP_BOUNDS} opacity={1} />
+      ) : null}
     </MapContainer>
   );
 }

@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:clean": "fuser -k 5173/tcp || true && vite",
+    "generate:highlights": "node scripts/generate-highlights.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
