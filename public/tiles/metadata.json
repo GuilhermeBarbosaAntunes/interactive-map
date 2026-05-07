@@ -1,0 +1,10 @@
+{
+  "name": "Interactive Custom Map",
+  "tileSize": 256,
+  "minZoom": 0,
+  "maxZoom": 6,
+  "width": 4677,
+  "height": 6622,
+  "backgroundColor": "#D2B790",
+  "tileUrl": "/tiles/{z}/{x}_{y}.webp"
+}

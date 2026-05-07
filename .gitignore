@@ -23,8 +23,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-/public/tiles/*.png
-/public/tiles/*.jpg
-/public/tiles/*.webp
+/public/tiles/**/*.webp
 !/public/tiles/.gitkeep
 *.env
+__pycache__/
+*.pyc

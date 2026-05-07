@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import MapView from "../components/Map/MapView";
+import { mapLocations } from "../data/mapLocations";
 import type { MapFilters, MapLocation } from "../types/map";
 import { StaticLocationRepository } from "../services/staticLocationRepository";
 import { filterLocations } from "../utils/mapFilters";
@@ -64,10 +65,50 @@ export default function MapPage() {
   }, []);
 
   const visibleLocations = useMemo(() => filterLocations(allLocations, filters), [allLocations, filters]);
+  const visibleLocationsWithPixelCoordinates = useMemo(
+    () =>
+      visibleLocations.filter(
+        (location) => Number.isFinite(location.x) && Number.isFinite(location.y),
+      ),
+    [visibleLocations],
+  );
+  const fallbackMapLocations = useMemo<MapLocation[]>(
+    () =>
+      mapLocations.map((location) => ({
+        id: location.id,
+        city: location.name,
+        name: location.name,
+        description: location.description ?? "",
+        x: location.x,
+        y: location.y,
+        category: location.category,
+      })),
+    [],
+  );
+  const locationsToRenderOnMap =
+    visibleLocationsWithPixelCoordinates.length > 0
+      ? visibleLocationsWithPixelCoordinates
+      : fallbackMapLocations;
   const selectedLocation = useMemo(
     () => getBestLocationMatch(visibleLocations, filters.searchText ?? ""),
     [visibleLocations, filters.searchText],
   );
+  useEffect(() => {
+    if (!import.meta.env.DEV) {
+      return;
+    }
+
+    const locationsWithoutPixelCoordinates = visibleLocations.filter(
+      (location) => !Number.isFinite(location.x) || !Number.isFinite(location.y),
+    );
+    if (locationsWithoutPixelCoordinates.length === 0) {
+      return;
+    }
+
+    console.warn(
+      `MapView skipped ${locationsWithoutPixelCoordinates.length} locations without x/y pixel coordinates.`,
+    );
+  }, [visibleLocations]);
   const hasActiveSearchText = (filters.searchText ?? "").trim().length > 0;
   // const locationPreviewList = visibleLocations.slice(0, 12);
 
@@ -190,7 +231,10 @@ export default function MapPage() {
         </div> */}
       </aside>
       <main>
-        <MapView />
+        <MapView
+          locations={locationsToRenderOnMap}
+          selectedLocationId={selectedLocation?.id ?? null}
+        />
       </main>
     </div>
   );
