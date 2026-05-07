@@ -69,7 +69,7 @@ export default function MapPage() {
     [visibleLocations, filters.searchText],
   );
   const hasActiveSearchText = (filters.searchText ?? "").trim().length > 0;
-  const locationPreviewList = visibleLocations.slice(0, 12);
+  // const locationPreviewList = visibleLocations.slice(0, 12);
 
   if (isLoading) {
     return (
@@ -128,7 +128,7 @@ export default function MapPage() {
           }
         />
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", marginBottom: "16px" }}>
+        {/* <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", marginBottom: "16px" }}>
           <div
             style={{
               backgroundColor: "#1f2937",
@@ -151,7 +151,7 @@ export default function MapPage() {
             <div style={{ fontSize: "12px", color: "#9ca3af" }}>Filtered</div>
             <strong style={{ fontSize: "20px", color: "#93c5fd" }}>{visibleLocations.length}</strong>
           </div>
-        </div>
+        </div> */}
 
         {selectedLocation ? (
           <div
@@ -172,7 +172,7 @@ export default function MapPage() {
           </p>
         ) : null}
 
-        <h3 style={{ marginTop: 0, marginBottom: "8px", color: "#f3f4f6" }}>Reference preview</h3>
+        {/* <h3 style={{ marginTop: 0, marginBottom: "8px", color: "#f3f4f6" }}>Reference preview</h3>
         <div style={{ display: "grid", gap: "6px" }}>
           {locationPreviewList.map((location) => (
             <div
@@ -185,10 +185,9 @@ export default function MapPage() {
               }}
             >
               <div style={{ color: "#f9fafb", fontWeight: 600 }}>{location.city}</div>
-              <div style={{ color: "#9ca3af", fontSize: "12px" }}>ID: {location.id}</div>
             </div>
           ))}
-        </div>
+        </div> */}
       </aside>
       <main>
         <MapView />
