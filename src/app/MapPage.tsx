@@ -1,19 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import MapView from "../components/Map/MapView";
-import type { LocationCategory, MapFilters, MapLocation } from "../types/map";
+import type { MapFilters, MapLocation } from "../types/map";
 import { StaticLocationRepository } from "../services/staticLocationRepository";
 import { filterLocations } from "../utils/mapFilters";
 
 const defaultFilters: MapFilters = {
   searchText: "",
-  category: undefined,
-  type: undefined,
-  id: undefined,
-  lat: undefined,
-  lng: undefined,
-  city: "",
-  description: "",
-  iconKey: undefined,
 };
 
 function normalizeText(value: string): string {
@@ -49,39 +41,10 @@ function getBestLocationMatch(locations: MapLocation[], searchText: string): Map
   );
 }
 
-function getSafeGroupLabel(rawValue: string | undefined, fallbackLabel: string): string {
-  const normalizedValue = rawValue?.trim();
-  if (!normalizedValue) {
-    return fallbackLabel;
-  }
-  return normalizedValue;
-}
-
-function isLocationCategory(value: string): value is LocationCategory {
-  return (
-    value === "primary" ||
-    value === "secondary" ||
-    value === "collectible" ||
-    value === "service" ||
-    value === "event" ||
-    value === "other"
-  );
-}
-
-function formatOptionLabel(value: string): string {
-  return value
-    .replace(/[_-]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .replace(/\b\w/g, (character) => character.toUpperCase());
-}
-
 export default function MapPage() {
-  const [selectedLocationId, setSelectedLocationId] = useState<string | undefined>(undefined);
   const [allLocations, setAllLocations] = useState<MapLocation[]>([]);
   const [filters, setFilters] = useState<MapFilters>(defaultFilters);
   const [isLoading, setIsLoading] = useState(true);
-  const [areLocationsVisible, setAreLocationsVisible] = useState(true);
 
   useEffect(() => {
     const repository = new StaticLocationRepository();
@@ -100,98 +63,13 @@ export default function MapPage() {
     void loadLocations();
   }, []);
 
-  const filteredLocations = useMemo(() => filterLocations(allLocations, filters), [allLocations, filters]);
-  const visibleLocations = areLocationsVisible ? filteredLocations : [];
-
-  const availableCategoryOptions = useMemo(() => {
-    const options = new Set<LocationCategory>();
-    for (const location of allLocations) {
-      const categoryLabel = location.category?.trim();
-      if (categoryLabel && isLocationCategory(categoryLabel)) {
-        options.add(categoryLabel);
-      }
-    }
-    return Array.from(options).sort((left, right) => left.localeCompare(right));
-  }, [allLocations]);
-
-  const availableTypeOptions = useMemo(() => {
-    const options = new Set<string>();
-    for (const location of allLocations) {
-      const typeLabel = location.type?.trim();
-      if (typeLabel) {
-        options.add(typeLabel);
-      }
-    }
-    return Array.from(options).sort((left, right) => left.localeCompare(right));
-  }, [allLocations]);
-
-  const locationCountByCategory = useMemo(() => {
-    const countByCategory = new Map<string, number>();
-    for (const location of allLocations) {
-      const categoryLabel = getSafeGroupLabel(location.category, "Uncategorized");
-      countByCategory.set(categoryLabel, (countByCategory.get(categoryLabel) ?? 0) + 1);
-    }
-    return Array.from(countByCategory.entries()).sort(([left], [right]) =>
-      left.localeCompare(right),
-    );
-  }, [allLocations]);
-
-  const locationCountByType = useMemo(() => {
-    const countByType = new Map<string, number>();
-    for (const location of allLocations) {
-      const typeLabel = getSafeGroupLabel(location.type, "Unspecified type");
-      countByType.set(typeLabel, (countByType.get(typeLabel) ?? 0) + 1);
-    }
-    return Array.from(countByType.entries()).sort(([left], [right]) => left.localeCompare(right));
-  }, [allLocations]);
-
-  const activeFilterLabels = useMemo(() => {
-    const labels: string[] = [];
-    const normalizedSearchText = (filters.searchText ?? "").trim();
-    if (normalizedSearchText.length > 0) {
-      labels.push(`Search: ${normalizedSearchText}`);
-    }
-    if (filters.category?.trim()) {
-      labels.push(`Category: ${filters.category}`);
-    }
-    if (filters.type?.trim()) {
-      labels.push(`Type: ${filters.type}`);
-    }
-    if (!areLocationsVisible) {
-      labels.push("Locations hidden");
-    }
-    return labels;
-  }, [filters.searchText, filters.category, filters.type, areLocationsVisible]);
-
-  function resetAllFiltersAndShowLocations(): void {
-    setFilters(defaultFilters);
-    setAreLocationsVisible(true);
-  }
-
-  function hideAllLocations(): void {
-    setAreLocationsVisible(false);
-    setSelectedLocationId(undefined);
-  }
-
-  useEffect(() => {
-    if (!areLocationsVisible) {
-      setSelectedLocationId(undefined);
-      return;
-    }
-
-    const matchingLocation = getBestLocationMatch(visibleLocations, filters.searchText ?? "");
-    setSelectedLocationId(matchingLocation?.id);
-  }, [areLocationsVisible, visibleLocations, filters.searchText]);
-
-  const selectedLocation = useMemo(() => {
-    if (!selectedLocationId) {
-      return null;
-    }
-    return allLocations.find((location) => location.id === selectedLocationId) ?? null;
-  }, [selectedLocationId, allLocations]);
-
+  const visibleLocations = useMemo(() => filterLocations(allLocations, filters), [allLocations, filters]);
+  const selectedLocation = useMemo(
+    () => getBestLocationMatch(visibleLocations, filters.searchText ?? ""),
+    [visibleLocations, filters.searchText],
+  );
   const hasActiveSearchText = (filters.searchText ?? "").trim().length > 0;
-  const hasNoCityMatch = hasActiveSearchText && !selectedLocation;
+  const locationPreviewList = visibleLocations.slice(0, 12);
 
   if (isLoading) {
     return (
@@ -207,7 +85,7 @@ export default function MapPage() {
       >
         <div>
           <h1>Loading...</h1>
-          <p>Please wait while we load the map...</p>
+          <p>Please wait while the map references are loaded.</p>
         </div>
       </div>
     );
@@ -224,58 +102,10 @@ export default function MapPage() {
           color: "#e5e7eb",
         }}
       >
-        <h2 style={{ marginTop: 0, marginBottom: "12px", color: "#f9fafb" }}>Interactive Filters</h2>
-
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", marginBottom: "12px" }}>
-          <button
-            type="button"
-            onClick={resetAllFiltersAndShowLocations}
-            style={{
-              border: "1px solid #3b82f6",
-              borderRadius: "6px",
-              backgroundColor: "#1d4ed8",
-              color: "#ffffff",
-              padding: "8px 10px",
-              cursor: "pointer",
-            }}
-          >
-            Show all
-          </button>
-          <button
-            type="button"
-            onClick={hideAllLocations}
-            style={{
-              border: "1px solid #374151",
-              borderRadius: "6px",
-              backgroundColor: "#1f2937",
-              color: "#e5e7eb",
-              padding: "8px 10px",
-              cursor: "pointer",
-            }}
-          >
-            Hide all
-          </button>
-        </div>
-
-        {activeFilterLabels.length > 0 ? (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "12px" }}>
-            {activeFilterLabels.map((activeFilterLabel) => (
-              <span
-                key={activeFilterLabel}
-                style={{
-                  fontSize: "12px",
-                  padding: "4px 8px",
-                  borderRadius: "999px",
-                  backgroundColor: "#1f2937",
-                  color: "#93c5fd",
-                  border: "1px solid #374151",
-                }}
-              >
-                {activeFilterLabel}
-              </span>
-            ))}
-          </div>
-        ) : null}
+        <h2 style={{ marginTop: 0, marginBottom: "8px", color: "#f9fafb" }}>Tile Map Controls</h2>
+        <p style={{ marginTop: 0, marginBottom: "16px", color: "#cbd5e1" }}>
+          Use city search to find references while positioning data over the tile map.
+        </p>
 
         <input
           style={{
@@ -288,7 +118,7 @@ export default function MapPage() {
             padding: "8px 10px",
           }}
           type="text"
-          placeholder="Type a city name"
+          placeholder="Search city"
           value={filters.searchText}
           onChange={(event) =>
             setFilters((previousFilters: MapFilters) => ({
@@ -297,58 +127,6 @@ export default function MapPage() {
             }))
           }
         />
-
-        <select
-          style={{
-            width: "100%",
-            marginBottom: "12px",
-            backgroundColor: "#0b1220",
-            color: "#e5e7eb",
-            border: "1px solid #374151",
-            borderRadius: "6px",
-            padding: "8px 10px",
-          }}
-          value={filters.category ?? ""}
-          onChange={(event) =>
-            setFilters((previousFilters: MapFilters) => ({
-              ...previousFilters,
-              category: isLocationCategory(event.target.value) ? event.target.value : undefined,
-            }))
-          }
-        >
-          <option value="">All categories</option>
-          {availableCategoryOptions.map((categoryOption) => (
-            <option key={categoryOption} value={categoryOption}>
-              {formatOptionLabel(categoryOption)}
-            </option>
-          ))}
-        </select>
-
-        <select
-          style={{
-            width: "100%",
-            marginBottom: "16px",
-            backgroundColor: "#0b1220",
-            color: "#e5e7eb",
-            border: "1px solid #374151",
-            borderRadius: "6px",
-            padding: "8px 10px",
-          }}
-          value={filters.type ?? ""}
-          onChange={(event) =>
-            setFilters((previousFilters: MapFilters) => ({
-              ...previousFilters,
-              type: event.target.value || undefined,
-            }))
-          }
-        >
-          <option value="">All types</option>
-          {availableTypeOptions.map((typeOption) => (
-            <option key={typeOption} value={typeOption}>
-              {formatOptionLabel(typeOption)}
-            </option>
-          ))}
-        </select>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", marginBottom: "16px" }}>
           <div
@@ -370,102 +148,15 @@ export default function MapPage() {
               padding: "10px",
             }}
           >
-            <div style={{ fontSize: "12px", color: "#9ca3af" }}>Visible</div>
+            <div style={{ fontSize: "12px", color: "#9ca3af" }}>Filtered</div>
             <strong style={{ fontSize: "20px", color: "#93c5fd" }}>{visibleLocations.length}</strong>
           </div>
         </div>
 
-        <details open style={{ marginTop: "8px" }}>
-          <summary style={{ cursor: "pointer", color: "#f3f4f6", marginBottom: "8px" }}>By category</summary>
-          <div style={{ display: "grid", gap: "6px" }}>
-            {locationCountByCategory.map(([categoryLabel, locationCount]) => (
-              <button
-                type="button"
-                key={categoryLabel}
-                onClick={() =>
-                  setFilters((previousFilters: MapFilters) => ({
-                    ...previousFilters,
-                    category: isLocationCategory(categoryLabel) ? categoryLabel : undefined,
-                  }))
-                }
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  width: "100%",
-                  border: "1px solid #374151",
-                  backgroundColor:
-                    filters.category === categoryLabel ? "rgba(59, 130, 246, 0.2)" : "#111827",
-                  color: "#e5e7eb",
-                  borderRadius: "6px",
-                  padding: "8px 10px",
-                  cursor: "pointer",
-                }}
-              >
-                <span>{formatOptionLabel(categoryLabel)}</span>
-                <span
-                  style={{
-                    backgroundColor: "#1f2937",
-                    borderRadius: "999px",
-                    padding: "2px 8px",
-                    fontSize: "12px",
-                    color: "#93c5fd",
-                  }}
-                >
-                  {locationCount}
-                </span>
-              </button>
-            ))}
-          </div>
-        </details>
-
-        <details open style={{ marginTop: "16px" }}>
-          <summary style={{ cursor: "pointer", color: "#f3f4f6", marginBottom: "8px" }}>By type</summary>
-          <div style={{ display: "grid", gap: "6px" }}>
-            {locationCountByType.map(([typeLabel, locationCount]) => (
-              <button
-                type="button"
-                key={typeLabel}
-                onClick={() =>
-                  setFilters((previousFilters: MapFilters) => ({
-                    ...previousFilters,
-                    type: typeLabel === "Unspecified type" ? undefined : typeLabel,
-                  }))
-                }
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  width: "100%",
-                  border: "1px solid #374151",
-                  backgroundColor: filters.type === typeLabel ? "rgba(59, 130, 246, 0.2)" : "#111827",
-                  color: "#e5e7eb",
-                  borderRadius: "6px",
-                  padding: "8px 10px",
-                  cursor: "pointer",
-                }}
-              >
-                <span>{formatOptionLabel(typeLabel)}</span>
-                <span
-                  style={{
-                    backgroundColor: "#1f2937",
-                    borderRadius: "999px",
-                    padding: "2px 8px",
-                    fontSize: "12px",
-                    color: "#93c5fd",
-                  }}
-                >
-                  {locationCount}
-                </span>
-              </button>
-            ))}
-          </div>
-        </details>
-
         {selectedLocation ? (
           <div
             style={{
-              marginTop: "16px",
+              marginBottom: "16px",
               border: "1px solid #374151",
               borderRadius: "8px",
               backgroundColor: "#0f172a",
@@ -475,16 +166,32 @@ export default function MapPage() {
             <h3 style={{ marginTop: 0, marginBottom: "8px", color: "#f9fafb" }}>{selectedLocation.city}</h3>
             <p style={{ margin: 0, color: "#cbd5e1" }}>{selectedLocation.description}</p>
           </div>
-        ) : hasNoCityMatch ? (
-          <p style={{ marginTop: "16px", color: "#fca5a5", fontWeight: 600 }}>
-            City not found. Try another name.
+        ) : hasActiveSearchText ? (
+          <p style={{ marginTop: 0, marginBottom: "16px", color: "#fca5a5", fontWeight: 600 }}>
+            No city match found.
           </p>
-        ) : (
-          <p style={{ marginTop: "16px", color: "#cbd5e1" }}>Type a city name to highlight it on the map</p>
-        )}
+        ) : null}
+
+        <h3 style={{ marginTop: 0, marginBottom: "8px", color: "#f3f4f6" }}>Reference preview</h3>
+        <div style={{ display: "grid", gap: "6px" }}>
+          {locationPreviewList.map((location) => (
+            <div
+              key={location.id}
+              style={{
+                border: "1px solid #374151",
+                borderRadius: "6px",
+                padding: "8px 10px",
+                backgroundColor: "#111827",
+              }}
+            >
+              <div style={{ color: "#f9fafb", fontWeight: 600 }}>{location.city}</div>
+              <div style={{ color: "#9ca3af", fontSize: "12px" }}>ID: {location.id}</div>
+            </div>
+          ))}
+        </div>
       </aside>
       <main>
-        <MapView highlightedMunicipalityCode={selectedLocation?.id} />
+        <MapView />
       </main>
     </div>
   );

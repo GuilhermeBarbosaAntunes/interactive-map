@@ -1,86 +1,12 @@
-import { useEffect, useRef, useState } from "react";
 import { ImageOverlay, MapContainer, TileLayer } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-interface MapViewProps {
-  highlightedMunicipalityCode?: string;
-}
-const JPG_WIDTH = 4677;
-const JPG_HEIGHT = 6622;
-const MAP_BOUNDS: L.LatLngBoundsLiteral = [[0, 0], [JPG_HEIGHT, JPG_WIDTH]];
+const MAP_IMAGE_WIDTH = 4677;
+const MAP_IMAGE_HEIGHT = 6622;
+const MAP_BOUNDS: L.LatLngBoundsLiteral = [[0, 0], [MAP_IMAGE_HEIGHT, MAP_IMAGE_WIDTH]];
 
-function MapView({ highlightedMunicipalityCode }: MapViewProps) {
-  const [highlightOverlayUrl, setHighlightOverlayUrl] = useState<string | null>(null);
-  const highlightOverlayBlobByMunicipalityCodeRef = useRef<Map<string, Blob | null>>(new Map());
-
-  useEffect(() => {
-    let isCancelled = false;
-    let currentObjectUrl: string | null = null;
-
-    async function updateHighlightOverlay() {
-      const normalizedMunicipalityCode = highlightedMunicipalityCode?.trim();
-      if (!normalizedMunicipalityCode) {
-        setHighlightOverlayUrl(null);
-        return;
-      }
-
-      try {
-        let overlayBlob = highlightOverlayBlobByMunicipalityCodeRef.current.get(
-          normalizedMunicipalityCode,
-        );
-
-        if (overlayBlob === undefined) {
-          const highlightOverlayAssetUrl = `/highlights/${normalizedMunicipalityCode}.png`;
-          const response = await fetch(highlightOverlayAssetUrl);
-          if (response.status === 404) {
-            highlightOverlayBlobByMunicipalityCodeRef.current.set(normalizedMunicipalityCode, null);
-            if (!isCancelled) {
-              setHighlightOverlayUrl(null);
-            }
-            return;
-          }
-
-          if (!response.ok) {
-            throw new Error("Failed to fetch municipality highlight image");
-          }
-
-          overlayBlob = await response.blob();
-          highlightOverlayBlobByMunicipalityCodeRef.current.set(
-            normalizedMunicipalityCode,
-            overlayBlob,
-          );
-        }
-
-        if (!overlayBlob) {
-          if (!isCancelled) {
-            setHighlightOverlayUrl(null);
-          }
-          return;
-        }
-
-        currentObjectUrl = URL.createObjectURL(overlayBlob);
-        if (!isCancelled) {
-          setHighlightOverlayUrl(currentObjectUrl);
-        }
-      } catch (error) {
-        console.error("Error loading municipality highlight overlay:", error);
-        if (!isCancelled) {
-          setHighlightOverlayUrl(null);
-        }
-      }
-    }
-
-    void updateHighlightOverlay();
-
-    return () => {
-      isCancelled = true;
-      if (currentObjectUrl) {
-        URL.revokeObjectURL(currentObjectUrl);
-      }
-    };
-  }, [highlightedMunicipalityCode]);
-
+function MapView() {
   return (
     <MapContainer
       bounds={MAP_BOUNDS}
@@ -100,9 +26,6 @@ function MapView({ highlightedMunicipalityCode }: MapViewProps) {
         bounds={MAP_BOUNDS}
         noWrap={true}
       />
-      {highlightOverlayUrl ? (
-        <ImageOverlay url={highlightOverlayUrl} bounds={MAP_BOUNDS} opacity={1} />
-      ) : null}
     </MapContainer>
   );
 }

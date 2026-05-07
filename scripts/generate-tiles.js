@@ -1,32 +1,28 @@
-// Para usar no futuro: node scripts/generate-tiles.js
-// Requer instalação: npm install -D sharp
+import fs from "node:fs";
+import sharp from "sharp";
 
-import sharp from 'sharp';
-import fs from 'fs';
-import path from 'path';
-
-const INPUT_IMAGE = 'mapa-completo.png';
-const OUTPUT_DIR = 'public/tiles';
+const INPUT_IMAGE = "mapa.png";
+const OUTPUT_DIR = "public/tiles";
 const TILE_SIZE = 256;
 
 async function generateTiles() {
   if (!fs.existsSync(INPUT_IMAGE)) {
-    console.error(`❌ Arquivo ${INPUT_IMAGE} não encontrado!`);
-    console.log('Coloque sua imagem do mapa na raiz do projeto com este nome.');
+    console.error(`Input image "${INPUT_IMAGE}" was not found.`);
+    console.log("Place the map image in the project root and run the command again.");
     return;
   }
 
-  console.log('🗺️  Gerando tiles... Isso pode levar alguns minutos.');
-  
+  console.log("Generating tiles. This can take a few minutes...");
+
   await sharp(INPUT_IMAGE)
     .tile({
       size: TILE_SIZE,
-      layout: 'google', // Pastas padrão {z}/{x}/{y}
-      background: { r: 0, g: 0, b: 0, alpha: 0 }
+      layout: "google",
+      background: { r: 0, g: 0, b: 0, alpha: 0 },
     })
     .toFile(OUTPUT_DIR);
 
-  console.log('✅ Tiles geradas com sucesso em public/tiles/');
+  console.log(`Tiles generated successfully in "${OUTPUT_DIR}".`);
 }
 
 generateTiles().catch(console.error);

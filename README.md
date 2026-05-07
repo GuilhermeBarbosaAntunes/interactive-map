@@ -47,7 +47,7 @@ pnpm lint           # Run ESLint
 pnpm test           # Run tests once
 pnpm test:watch     # Run tests in watch mode
 pnpm test:coverage  # Run tests with coverage report
-pnpm generate:highlights # Generate municipality highlight overlays
+pnpm generate:tiles # Generate map tiles from mapa.png
 ```
 
 ## Project Structure
@@ -79,8 +79,6 @@ public/
 ## Notes
 
 - The map uses local tiles from `public/tiles`.
-- Municipality highlights are loaded from `public/highlights/<municipality_code>.png`.
-- Source files for highlights must be placed in `assets/municipality-highlights/<municipality_code>.png`.
-- Run `pnpm generate:highlights` after adding new source highlight files.
+- Place `mapa.png` in the project root before running `pnpm generate:tiles`.
 - Markers are currently loaded from local JSON data in `src/data`.
 - Leaflet marker icon setup is handled in `MapView` to avoid common bundler issues.
